@@ -1,26 +1,109 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <locale/keys_de.h>
+
+/*
+ * Tastenbelegung (Positionen für Combos):
+ *
+ *  0  1  2  3  4      5  6  7  8  9
+ * 10 11 12 13 14     15 16 17 18 19
+ * 20 21 22 23 24     25 26 27 28 29
+ *          30 31     32 33
+ *
+ * Base Layer:
+ *  X  V  L  C  W      K  H  G  F  Q
+ *  Ü  I  Ä  E  Ö      S  N  R  T  D
+ * TAB DEL Y  P  Z      B  M  ,  .  J
+ *           SFT SPC   BSP SYM
+ *
+ * Combo: Z(24) + S(15) = ß
+ */
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_eszett {
+            timeout-ms = <50>;
+            key-positions = <24 15>;
+            bindings = <&kp DE_ESZETT>;
+        };
+    };
+
+    behaviors {
+        td_umlaut_u: td_umlaut_u {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp U>, <&kp DE_U_UMLAUT>;
+        };
+        td_umlaut_a: td_umlaut_a {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp A>, <&kp DE_A_UMLAUT>;
+        };
+        td_umlaut_o: td_umlaut_o {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp O>, <&kp DE_O_UMLAUT>;
+        };
+        td_mute: td_mute {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <&kp K_MUTE>, <&kp DE_EQUAL>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            bindings = 
-                &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I &kp O &kp P
-                &kp A &kp S &kp D &kp F &kp G      &kp H &kp J &kp K &kp L &kp SEMI
-                &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M &kp COMMA &kp DOT &kp SLASH
-                                  &mo 1 &kp LSFT  &kp SPC &mo 2
+        base_layer {
+            bindings = <
+// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+//  0             1             2             3             4                  5             6             7             8             9
+    &kp X         &kp V         &kp L         &kp C         &kp W             &kp K         &kp H         &kp G         &kp F         &kp Q
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+//  10            11            12            13            14                 15            16            17            18            19
+    &td_umlaut_u  &kp I         &td_umlaut_a  &kp E         &td_umlaut_o      &kp S         &kp N         &kp R         &kp T         &mt LCTRL D
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+//  20            21            22            23            24                 25            26            27            28            29
+    &kp TAB       &mt LALT DEL  &kp DE_Y      &kp P         &kp DE_Z          &kp B         &kp M         &kp COMMA     &kp DOT       &mt LGUI J
+// ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+//                                            30            31                 32            33
+                                              &sk LSHFT     &mt LCTRL SPACE   &mt RALT BSPC &mo 1
+//                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
 
-        nav_layer {
-            bindings = 
-                &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
-                &trans &trans &trans &trans &trans   &trans &trans &trans &trans &trans
-                                     &trans &trans  &trans &trans
+        sym_layer {
+            bindings = <
+// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &kp N0        &kp N6        &kp N7        &kp N8        &kp N9
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp DE_LESS_THAN &kp DE_LEFT_BRACE &kp DE_LEFT_PARENTHESIS &kp DE_LEFT_BRACKET &kp DE_AMPERSAND   &kp DE_BACKSLASH &kp DE_EXCLAMATION &kp DE_DOUBLE_QUOTES &kp DE_TILDE &kp DE_RIGHT_BRACKET
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp DE_GREATER_THAN &kp DE_RIGHT_BRACE &kp DE_RIGHT_PARENTHESIS &kp DE_RIGHT_BRACKET &kp DE_PIPE   &kp DE_AT     &kp DE_QUESTION &kp DE_BACKSLASH &kp DE_SLASH &kp ENTER
+// ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              &sk LSHFT     &to 2             &none         &none
+//                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
+            >;
+        };
+
+        func_layer {
+            bindings = <
+// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &kp F1        &kp F2        &kp F3        &kp F4        &kp F5            &kp F10       &kp F6        &kp F7        &kp F8        &kp F9
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp ENTER     &kp C_BRI_UP  &kp C_VOL_UP  &mt LCTRL GRAVE &kp DEL         &kp F11       &kp HOME      &kp UP        &kp END       &kp PG_UP
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &kp TAB       &kp C_BRI_DN  &kp C_VOL_DN  &td_mute      &kp ESC           &kp F12       &kp LEFT      &kp DOWN      &kp RIGHT     &kp PG_DN
+// ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                              &sk LSHFT     &mt LCTRL SPACE   &mt LALT BSPC &to 0
+//                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
     };
