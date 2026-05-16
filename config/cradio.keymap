@@ -59,6 +59,11 @@
  * TAB DEL Y  P  Z      B  M  ,  .  J
  *           SFT SPC   BSP SYM
  */
+&mt {
+        flavor = "tap-preferred";
+        tapping-term-ms = <250>;
+        quick-tap-ms = <125>;
+};
 
 / {
     behaviors {
@@ -110,12 +115,6 @@
             quick-tap-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
-    };
-
-    &mt {
-        flavor = "tap-preferred";
-        tapping-term-ms = <250>;
-        quick-tap-ms = <125>;
     };
 
     keymap {
