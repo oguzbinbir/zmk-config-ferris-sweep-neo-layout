@@ -2,16 +2,10 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: nickcoutsos
-      url-base: https://github.com/nickcoutsos
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: v0.3.0
       import: app/west.yml
-    - name: keymap-symbols-de
-      remote: nickcoutsos
-      revision: main
-      path: modules/lib/keymap-symbols-de
   self:
     path: config
