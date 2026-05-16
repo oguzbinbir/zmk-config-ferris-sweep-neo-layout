@@ -43,6 +43,7 @@
 #define DE_STAR             LS(RBKT)             // *
 #define DE_MINUS            SLASH                // -
 #define DE_UNDERSCORE       LS(SLASH)            // _
+#define DE_ACUTE            EQUAL                // ´ (Akzent-Taste, neben Backspace)
 
 /*
  * Tastenpositionen:
@@ -85,7 +86,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <250>;
-            bindings = <&kp K_MUTE>, <&kp DE_APOS>;
+            bindings = <&kp K_MUTE>, <&kp EQUAL>;
         };
 
         // Mod-Tap Space/Ctrl mit längerem Tapping-Term
@@ -135,7 +136,7 @@
 // ├──────────────┼──────────────┼─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┼──────────────┼──────────────────┤
     &kp DE_LESS_THAN &kp DE_LEFT_BRACE &kp DE_LEFT_PARENTHESIS &kp DE_LEFT_BRACKET &kp DE_AMPERSAND  &kp DE_HASH     &kp DE_EXCLAMATION &kp DE_DOUBLE_QUOTES &kp DE_TILDE &kp DE_PLUS
 // ├──────────────┼──────────────┼─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┼──────────────┼──────────────────┤
-    &kp DE_GREATER_THAN &kp DE_RIGHT_BRACE &kp DE_RIGHT_PARENTHESIS &kp DE_RIGHT_BRACKET &kp DE_PIPE  &kp DE_AT      &kp DE_QUESTION   &kp DE_BACKSLASH  &kp DE_MINUS  &kp ENTER
+    &kp DE_GREATER_THAN &kp DE_RIGHT_BRACE &kp DE_RIGHT_PARENTHESIS &kp DE_RIGHT_BRACKET &kp DE_PIPE  &kp DE_AT      &kp DE_QUESTION   &kp BSLH  &kp DE_MINUS  &kp ENTER
 // ╰──────────────┴──────────────┴─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┴──────────────┴──────────────────╯
                                                         &sk LSHFT            &to 2                 &none             &none
 //                                                     ╰────────────────────┴─────────────────╯   ╰─────────────────┴──────────────────╯
