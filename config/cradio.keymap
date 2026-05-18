@@ -115,6 +115,13 @@
             quick-tap-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
+
+        bslh_morph: bslh_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DE_BACKSLASH>, <&kp DE_ESZETT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -139,9 +146,9 @@
 // ╭──────────────┬──────────────┬─────────────────────┬────────────────────┬─────────────────╮   ╭─────────────────┬──────────────────┬─────────────────┬──────────────┬──────────────────╮
     &kp N1         &kp N2         &kp N3                &kp N4               &kp N5                &kp N0            &kp N6            &kp N7            &kp N8         &kp N9
 // ├──────────────┼──────────────┼─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┼──────────────┼──────────────────┤
-    &kp DE_LESS_THAN &kp DE_LEFT_BRACE &kp DE_LEFT_PARENTHESIS &kp DE_LEFT_BRACKET &kp DE_AMPERSAND  &kp DE_BACKSLASH     &kp DE_EXCLAMATION &kp DE_DOUBLE_QUOTES &kp DE_TILDE &kp DE_PLUS
+    &kp DE_LESS_THAN &kp DE_LEFT_BRACE &kp DE_LEFT_PARENTHESIS &kp DE_LEFT_BRACKET &kp DE_AMPERSAND  &bslh_morph     &kp DE_EXCLAMATION &kp DE_DOUBLE_QUOTES &kp DE_TILDE &kp DE_PLUS
 // ├──────────────┼──────────────┼─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┼──────────────┼──────────────────┤
-    &kp DE_GREATER_THAN &kp DE_RIGHT_BRACE &kp DE_RIGHT_PARENTHESIS &kp DE_RIGHT_BRACKET &kp DE_PIPE  &kp DE_AT      &kp DE_ESZETT   &kp BSLH  &kp DE_MINUS  &kp ENTER
+    &kp DE_GREATER_THAN &kp DE_RIGHT_BRACE &kp DE_RIGHT_PARENTHESIS &kp DE_RIGHT_BRACKET &kp DE_PIPE  &kp DE_AT      &kp DE_QUESTION   &kp BSLH  &kp DE_MINUS  &kp ENTER
 // ╰──────────────┴──────────────┴─────────────────────┼────────────────────┼─────────────────┤   ├─────────────────┼──────────────────┼─────────────────┴──────────────┴──────────────────╯
                                                         &sk LSHFT            &to 2                 &none             &none
 //                                                     ╰────────────────────┴─────────────────╯   ╰─────────────────┴──────────────────╯
