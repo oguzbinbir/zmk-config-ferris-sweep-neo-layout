@@ -1,0 +1,48 @@
+# ZMK-Config: Ferris Sweep mit Neo-Layout
+
+ZMK-Firmware für einen Ferris Sweep (Shield `cradio`) mit zwei nice!nano v2,
+auf Basis von ZMK v0.3.0. Das Layout orientiert sich an Neo und setzt voraus,
+dass das Betriebssystem auf **Deutsch (QWERTZ)** eingestellt ist.
+
+![Keymap](keymap-drawer/cradio.svg)
+
+Die Grafik wird bei jeder Änderung an der Keymap automatisch von
+[keymap-drawer](https://github.com/caksoylar/keymap-drawer) erzeugt.
+
+## Dateien
+
+| Datei | Inhalt |
+| --- | --- |
+| `config/cradio.keymap` | Keymap (Layer, Combos, Behaviors) |
+| `config/cradio.conf` | Firmware-Einstellungen (Bluetooth, Akku, Sleep) |
+| `config/west.yml` | ZMK-Version |
+| `keymap_drawer.config.yaml` | Darstellung der Keymap-Grafik |
+
+## Layer
+
+- **Base**: Neo-Buchstaben. Doppeltipp auf U/A/O ergibt Ü/Ä/Ö. D, Del, J,
+  Space und Backspace sind beim Halten Modifier.
+- **Sym** (rechter Daumen halten): Zahlen und Sonderzeichen.
+- **Func** (aus Sym über die Toggle-Taste, zurück mit der rechten Daumentaste):
+  F-Tasten, Pfeile, Medien und Helligkeit.
+
+Combos auf dem Base-Layer: **X + V** = Esc, **F + Q** = Enter.
+
+## Firmware bauen und flashen
+
+1. Änderungen pushen. GitHub Actions („Build“) baut die Firmware.
+2. Im Workflow-Lauf die Artefakte herunterladen:
+   - `cradio_left-nice_nano_v2`
+   - `cradio_right-nice_nano_v2`
+3. Hälfte per USB anschließen, Reset-Knopf zweimal schnell drücken und die
+   passende `.uf2` auf das erscheinende Laufwerk kopieren.
+
+## Bluetooth-Kopplungen zurücksetzen
+
+Wenn sich die Hälften oder der Rechner nicht mehr verbinden:
+
+1. Das Artefakt `settings_reset-nice_nano_v2` auf **beide** Hälften flashen.
+2. Danach wieder die normale Firmware auf beide Hälften flashen.
+3. Beide Hälften gleichzeitig neu starten, damit sie sich koppeln.
+4. Die Tastatur auf dem Rechner aus der Bluetooth-Liste entfernen und neu
+   koppeln.
