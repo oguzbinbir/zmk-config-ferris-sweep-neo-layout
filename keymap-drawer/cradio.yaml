@@ -113,5 +113,14 @@ combos:
   k: ⏎
   l: [base]
 - p: [0, 1, 2]
-  k: BT CLR
+  k: BT löschen
+  l: [func]
+- p: [6, 7]
+  k: BT 1
+  l: [func]
+- p: [7, 8]
+  k: BT 2
+  l: [func]
+- p: [8, 9]
+  k: BT 3
   l: [func]

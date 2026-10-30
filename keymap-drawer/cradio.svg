@@ -591,7 +591,25 @@ path.combo {
 <path d="M84,52 l39,-16" class="combo"/>
 <rect rx="6" ry="6" x="70" y="39" width="28" height="26" class="combo"/>
 <text x="84" y="52" class="combo tap">
-<tspan x="84" dy="-0.6em">BT</tspan><tspan x="84" dy="1.2em">CLR</tspan>
+<tspan x="84" dy="-0.6em">BT</tspan><tspan x="84" dy="1.2em">löschen</tspan>
+</text>
+</g>
+<g class="combo combopos-1">
+<rect rx="6" ry="6" x="490" y="23" width="28" height="26" class="combo"/>
+<text x="504" y="36" class="combo tap">
+<tspan x="504" dy="-0.6em">BT</tspan><tspan x="504" dy="1.2em">1</tspan>
+</text>
+</g>
+<g class="combo combopos-2">
+<rect rx="6" ry="6" x="546" y="24" width="28" height="26" class="combo"/>
+<text x="560" y="37" class="combo tap">
+<tspan x="560" dy="-0.6em">BT</tspan><tspan x="560" dy="1.2em">2</tspan>
+</text>
+</g>
+<g class="combo combopos-3">
+<rect rx="6" ry="6" x="602" y="51" width="28" height="26" class="combo"/>
+<text x="616" y="64" class="combo tap">
+<tspan x="616" dy="-0.6em">BT</tspan><tspan x="616" dy="1.2em">3</tspan>
 </text>
 </g>
 </g>
