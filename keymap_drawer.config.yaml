@@ -25,6 +25,7 @@ parse_config:
     "&td_mute": {t: Mute, h: "2× ´"}
     "&bslh_morph": {t: \, s: ß}
     "&alt_ctrl": {t: Alt, s: Ctrl}
+    "&bootloader": "Boot"
     "&kp NON_US_BACKSLASH": "<"
     "&kp LS(NON_US_BACKSLASH)": ">"
     "&kp RA(NON_US_BACKSLASH)": "|"

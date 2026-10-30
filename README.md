@@ -28,6 +28,13 @@ Die Grafik wird bei jeder Änderung an der Keymap automatisch von
 
 Combos auf dem Base-Layer: **X + V** = Esc, **F + Q** = Enter.
 
+Combos auf dem Func-Layer:
+
+- **F1 + F2 + F3**: Bluetooth-Kopplung des aktuellen Profils löschen. Danach
+  die Tastatur am Rechner entfernen und neu koppeln.
+- **F7 + F8 + F9**: Bootloader der linken Hälfte starten (Flashen ohne
+  Reset-Knopf). Die rechte Hälfte braucht weiterhin den Reset-Knopf.
+
 ## Firmware bauen und flashen
 
 1. Änderungen pushen. GitHub Actions („Build“) baut die Firmware.
@@ -39,7 +46,10 @@ Combos auf dem Base-Layer: **X + V** = Esc, **F + Q** = Enter.
 
 ## Bluetooth-Kopplungen zurücksetzen
 
-Wenn sich die Hälften oder der Rechner nicht mehr verbinden:
+Wenn sich nur der Rechner nicht mehr verbindet, reicht meist **F1 + F2 + F3**
+auf dem Func-Layer (siehe oben).
+
+Wenn sich die Hälften nicht mehr miteinander verbinden:
 
 1. Das Artefakt `settings_reset-nice_nano_v2` auf **beide** Hälften flashen.
 2. Danach wieder die normale Firmware auf beide Hälften flashen.
