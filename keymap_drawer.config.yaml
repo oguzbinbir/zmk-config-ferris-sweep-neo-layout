@@ -1,0 +1,49 @@
+# Konfiguration für keymap-drawer (siehe .github/workflows/draw.yml).
+# Die Keymap nutzt US-Keycodes auf einem deutschen OS-Layout, daher werden
+# die Bindings hier auf die tatsächlich erzeugten Zeichen abgebildet.
+parse_config:
+  zmk_keycode_map:
+    Z: "Y"
+    Y: "Z"
+    COMMA: ","
+    DOT: "."
+    SPACE: "␣"
+    BSPC: "⌫"
+    DEL: "⌦"
+    TAB: "⇥"
+    ENTER: "⏎"
+    LSHFT: "⇧"
+    LCTRL: "Ctrl"
+    LALT: "Alt"
+    RALT: "AltGr"
+    LGUI: "Gui"
+    GRAVE: "^"
+  raw_binding_map:
+    "&td_umlaut_u": {t: U, h: "2× Ü"}
+    "&td_umlaut_a": {t: A, h: "2× Ä"}
+    "&td_umlaut_o": {t: O, h: "2× Ö"}
+    "&td_mute": {t: Mute, h: "2× ´"}
+    "&bslh_morph": {t: \, s: ß}
+    "&alt_ctrl": {t: Alt, s: Ctrl}
+    "&bt BT_CLR": "BT löschen"
+    "&bt BT_SEL 0": "BT 1"
+    "&bt BT_SEL 1": "BT 2"
+    "&bt BT_SEL 2": "BT 3"
+    "&kp NON_US_BACKSLASH": "<"
+    "&kp LS(NON_US_BACKSLASH)": ">"
+    "&kp RA(NON_US_BACKSLASH)": "|"
+    "&kp RA(N7)": "{"
+    "&kp RA(N0)": "}"
+    "&kp RA(N8)": "["
+    "&kp RA(N9)": "]"
+    "&kp LS(N8)": "("
+    "&kp LS(N9)": ")"
+    "&kp LS(N6)": "&"
+    "&kp LS(N1)": "!"
+    "&kp LS(N2)": '"'
+    "&kp RA(RBKT)": "~"
+    "&kp RA(Q)": "@"
+    "&kp LS(MINUS)": "?"
+    "&kp RBKT": "+"
+    "&kp SLASH": "-"
+    "&kp BSLH": "#"

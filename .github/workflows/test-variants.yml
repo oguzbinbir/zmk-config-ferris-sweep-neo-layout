@@ -1,0 +1,57 @@
+# Vorübergehend: Testversionen zur Fehlersuche bei der Verbindung der rechten Hälfte.
+# Jede Variante = config/cradio.conf + Zeilen aus test-variants/<variante>.conf
+on: [push, workflow_dispatch]
+name: Test Variants
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [v1-nur-reset-entfernt, v2-alte-bt-grenzen, v3-ohne-akku-abfrage]
+        side: [left, right]
+    name: ${{ matrix.variant }} (${{ matrix.side }})
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cache west modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-zephyr-modules
+        with:
+          path: |
+            modules/
+            tools/
+            zephyr/
+            bootloader/
+            zmk/
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('config/west.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: West Init
+        run: west init -l config
+      - name: West Update
+        run: west update
+      - name: West Zephyr export
+        run: west zephyr-export
+      - name: Prepare variant config
+        run: |
+          cp -r config variant-config
+          printf '\n' >> variant-config/cradio.conf
+          cat test-variants/${{ matrix.variant }}.conf >> variant-config/cradio.conf
+          cat variant-config/cradio.conf
+      - name: West Build
+        run: west build -s zmk/app -b nice_nano_v2 -- -DSHIELD=cradio_${{ matrix.side }} -DZMK_CONFIG="${GITHUB_WORKSPACE}/variant-config"
+      - name: Show resulting settings
+        run: grep -E "CONFIG_(BT_MAX_CONN|BT_MAX_PAIRED|ZMK_SETTINGS_RESET_ON_START|ZMK_SLEEP|ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING|ZMK_SPLIT_ROLE_CENTRAL)[= ]" build/zephyr/.config || true
+      - name: Rename zmk.uf2
+        run: cp build/zephyr/zmk.uf2 ${{ matrix.variant }}-${{ matrix.side }}.uf2
+      - name: Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.variant }}-${{ matrix.side }}
+          path: ${{ matrix.variant }}-${{ matrix.side }}.uf2
