@@ -594,12 +594,6 @@ path.combo {
 <tspan x="84" dy="-0.6em">BT</tspan><tspan x="84" dy="1.2em">CLR</tspan>
 </text>
 </g>
-<g class="combo combopos-1">
-<path d="M588,52 l-39,-16" class="combo"/>
-<path d="M588,52 l39,21" class="combo"/>
-<rect rx="6" ry="6" x="574" y="39" width="28" height="26" class="combo"/>
-<text x="588" y="52" class="combo tap">Boot</text>
-</g>
 </g>
 </g>
 </svg>
