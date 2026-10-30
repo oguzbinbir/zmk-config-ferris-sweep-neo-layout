@@ -25,6 +25,10 @@ parse_config:
     "&td_mute": {t: Mute, h: "2× ´"}
     "&bslh_morph": {t: \, s: ß}
     "&alt_ctrl": {t: Alt, s: Ctrl}
+    "&bt BT_CLR": "BT löschen"
+    "&bt BT_SEL 0": "BT 1"
+    "&bt BT_SEL 1": "BT 2"
+    "&bt BT_SEL 2": "BT 3"
     "&kp NON_US_BACKSLASH": "<"
     "&kp LS(NON_US_BACKSLASH)": ">"
     "&kp RA(NON_US_BACKSLASH)": "|"

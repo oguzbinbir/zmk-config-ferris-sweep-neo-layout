@@ -32,6 +32,18 @@ Combos auf dem Func-Layer:
 
 - **F1 + F2 + F3**: Bluetooth-Kopplung des aktuellen Profils löschen. Danach
   die Tastatur am Rechner entfernen und neu koppeln.
+- **F6 + F7 / F7 + F8 / F8 + F9**: Bluetooth-Profil 1 / 2 / 3 wählen.
+
+### Bluetooth-Profile
+
+Jedes Profil speichert die Kopplung mit einem Gerät; getippt wird immer nur
+auf dem Gerät des aktiven Profils. Die Auswahl bleibt nach Neustart und
+Deep Sleep erhalten.
+
+- **Neues Gerät koppeln**: ein freies Profil wählen und am Gerät koppeln.
+- **Gerät wechseln**: Profil wählen, die Verbindung steht nach 1–3 Sekunden.
+- **Kopplung löschen**: Profil wählen, dann F1 + F2 + F3.
+- Ist die linke Hälfte per USB angeschlossen, geht die Eingabe dorthin.
 ## Firmware bauen und flashen
 
 1. Änderungen pushen. GitHub Actions („Build“) baut die Firmware.
