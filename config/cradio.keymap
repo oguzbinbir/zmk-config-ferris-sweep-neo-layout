@@ -67,7 +67,6 @@
  *
  * Combos (nur Func Layer):
  *  F1 + F2 + F3  → Bluetooth-Kopplung des aktuellen Profils löschen
- *  F7 + F8 + F9  → Bootloader (linke Hälfte, zum Flashen)
  */
 &mt {
         flavor = "tap-preferred";
@@ -176,13 +175,6 @@
         combo_bt_clr {
             key-positions = <0 1 2>;
             bindings = <&bt BT_CLR>;
-            layers = <FUNC>;
-        };
-        // Combos laufen immer auf der linken Hälfte, daher startet dieser
-        // Combo nur links den Bootloader. Rechts weiter per Reset-Knopf.
-        combo_bootloader {
-            key-positions = <7 8 9>;
-            bindings = <&bootloader>;
             layers = <FUNC>;
         };
     };

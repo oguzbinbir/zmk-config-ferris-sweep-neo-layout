@@ -32,9 +32,6 @@ Combos auf dem Func-Layer:
 
 - **F1 + F2 + F3**: Bluetooth-Kopplung des aktuellen Profils löschen. Danach
   die Tastatur am Rechner entfernen und neu koppeln.
-- **F7 + F8 + F9**: Bootloader der linken Hälfte starten (Flashen ohne
-  Reset-Knopf). Die rechte Hälfte braucht weiterhin den Reset-Knopf.
-
 ## Firmware bauen und flashen
 
 1. Änderungen pushen. GitHub Actions („Build“) baut die Firmware.
